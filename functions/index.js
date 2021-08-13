@@ -176,9 +176,6 @@ exports.createProfileService = functions.firestore
             if (_businessProfilePhoto != null) {
                 _data['businessProfilePhoto'] = _businessProfilePhoto;
             }
-            if (itemId != null) {
-                _data["serviceId"] = serviceId
-            }
             if (_serviceName != null) {
                 _data['serviceName'] = _serviceName;
             }
@@ -359,15 +356,6 @@ exports.allServicesCollectionCreate = functions.firestore
         if (images != null) {
             item.images = images;
         }
-        if (description != null) {
-            item.description = description;
-        }
-        if (title != null) {
-            item.title = title;
-        }
-        if (price != null) {
-            item.price = price;
-        }
         if (category != null) {
             item.category = category;
         }
@@ -443,15 +431,6 @@ exports.allServicesCollectionCreate = functions.firestore
 
         const jsonItem = JSON.stringify(item);
         publishMessage(jsonItem, 'service-create')
-        // console.log(jsonItem);
-        // axios({
-        //     method: 'POST',
-        //     url: url,
-        //     data: jsonItem
-        // })
-        //     .then(data => console.log(data))
-        //     .catch(err => console.log(err));
-
     });
 
 
@@ -512,13 +491,6 @@ exports.allServicesCollectionUpdate = functions.firestore
 
         const jsonItem = JSON.stringify(item);
         publishMessage(jsonItem, 'service-update')
-        // axios({
-        //     method: 'POST',
-        //     url: url,
-        //     data: jsonItem
-        // })
-        //     .then(data => console.log(data))
-        //     .catch(err => console.log(err));
     });
 
 
@@ -535,9 +507,4 @@ exports.allServicesCollectionDelete = functions.firestore
         }
         const jsonItem = JSON.stringify(item);
         publishMessage(jsonItem, 'service-delete')
-        // axios({
-        //     method: 'POST',
-        //     url: url,
-        //     data: jsonItem
-        // })
     })
